@@ -8,7 +8,7 @@ lata = int(lit/18)
 
 if lit%18 != 0:
 	lata = lata+1
-	preco_total = float(lata*80)
+	preco_total = lata*80
 
 print("\t\tA quantidade de latas a serem compradas é: ", lata)
 print(f"\t\tO preço total a ser pago é: R${preco_total:.2f}")
