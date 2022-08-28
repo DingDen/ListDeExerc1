@@ -2,3 +2,13 @@
 #Considere que a cobertura da tinta é de 1 litro para cada 3 metros quadrados e que a tinta é vendida em latas de 18 litros, que custam R$ 80,00. 
 #Informe ao usuário a quantidades de latas de tinta a serem compradas e o preço total. 
 
+area = float(input("Digite o tamanho, em metros quadrados, da área a ser pintada: "))
+lit = area/3
+lata = int(lit/18)
+
+if lit%18 != 0:
+	lata = lata+1
+	preco_total = float(lata*80)
+
+print("\t\tA quantidade de latas a serem compradas é: ", lata)
+print(f"\t\tO preço total a ser pago é: R${preco_total:.2f}")
