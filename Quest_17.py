@@ -7,10 +7,13 @@
 #misturar latas e galões, de forma que o desperdício de tinta seja menor. Acrescente 10% de folga e sempre arredonde os valores para cima, isto é, considere latas cheias.
 
 a = float(input("Digite o tamanho, em metros quadrados, da área a ser pintada: "))
-lit = a/6
+folga = 1.1
+lit = (a/6)*folga
 lata = int(lit/18)
 gal = int(lit/3.6)
-latagal = int(lit/23.76)
+mistura_lata = int(lit/18)
+mistura_gal = int((lit - (mistura_lata*18))/3.6)
+preco_tot_mistura_lata = mistura_lata*80
 
 if lit%18 != 0:
 	lata = lata+1
@@ -20,10 +23,12 @@ if lit%3.6 != 0:
 	gal = gal+1
 	preco_tot_gal = gal*25
   
-if lit%23.76 != 0:     #Mistura = 18 + 3.6 + 10% de folga = 21.6 + 21.6*10% = 23.76 Litros 
-	latagal = latagal+1
-	preco_tot_latagal = latagal*105
+if (lit - (mistura_lata*18))%3.6 != 0:
+	mistura_gal = mistura_gal+1
+	preco_tot_mistura_gal = mistura_gal*25
+
 
 print("\tConsiderando apenas uma compra de latas de tinta, a quantidade de latas a serem compradas equivale a ", lata, f" e o preço total é R${preco_tot_lata:.2f}")
 print("\tConsiderando apenas uma compra de galões de tinta, a quantidade de galões a serem compradas equivale a ", gal, f" e o preço total é R${preco_tot_gal:.2f}")
-print("\tConsiderando uma mistura entre latas e galões, a quantidade dessa mistura a ser comprada equivale a ", latagal, f" e o preço total é R${preco_tot_latagal:.2f}")
+print(f"\tConsiderando uma mistura entre latas e galões, {mistura_lata} lata(s) devem ser compradas  e {mistura_gal} galão(ões)", end='. ') 
+print(f"O total gasto com latas é R${preco_tot_mistura_lata:.2f} e com galões é R${preco_tot_mistura_gal:.2f}")
